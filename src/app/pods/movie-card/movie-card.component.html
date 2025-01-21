@@ -1,9 +1,10 @@
-<div class="movie-card">
+<div class="movie-card {{ category }}">
   <img [src]="movie.posterSrc" [alt]="movie.title" class="movie-poster" />
+  <span class="movie-rating"
+    ><mat-icon>star</mat-icon> <span>{{ movie.rating }}</span></span
+  >
   <div class="movie-info">
     <h3 class="movie-title">{{ movie.title }}</h3>
-    <p class="movie-year">{{ movie.year }}</p>
     <p class="movie-plot">{{ movie.plot }}</p>
-    <span class="movie-rating">IMDb: {{ movie.rating }}</span>
   </div>
 </div>

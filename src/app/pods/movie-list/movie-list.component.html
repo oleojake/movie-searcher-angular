@@ -1,10 +1,11 @@
-<section class="movie-list-container">
-  <h2 class="movie-list-title">Last Releases</h2>
+<section class="movie-list-container" class="{{ filter }}">
+  <h2 class="movie-list-title">{{ headerTitle }}</h2>
   <div class="movie-list-grid">
     <app-movie-card
       *ngFor="let movie of movies"
       [movie]="movie"
       [routerLink]="['/movie', movie.id]"
+      [category]="filter"
     ></app-movie-card>
   </div>
 </section>

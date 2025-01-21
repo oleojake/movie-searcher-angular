@@ -11,19 +11,23 @@
       </div>
 
       <div class="info">
-        <h1>{{ movieDetails.title }}</h1>
-        <p><strong>Release Year:</strong> {{ movieDetails.year }}</p>
-        <p>
-          <strong>Genres:</strong>
-          <mat-chip>{{ movieDetails.genres }}</mat-chip>
-        </p>
-        <p><strong>Runtime:</strong> {{ movieDetails.runtime }}</p>
+        <div class="header">
+          <h1>{{ movieDetails.title }}</h1>
+          <p class="year">
+            {{ movieDetails.year }} - {{ movieDetails.runtime }}
+          </p>
+          <p class="genres">
+            <mat-chip *ngFor="let genre of movieDetails.genres">{{
+              genre
+            }}</mat-chip>
+          </p>
+        </div>
+        <p>{{ movieDetails.plot }}</p>
         <p class="rating">
           <strong>Rating:</strong>
           {{ movieDetails.rating }} / 10
           <mat-icon>star</mat-icon>
         </p>
-        <p><strong>Overview:</strong> {{ movieDetails.plot }}</p>
 
         <table>
           <tr>

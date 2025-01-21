@@ -15,7 +15,7 @@ export interface MovieDetailModel {
 	plot: string;
 	posterSrc: string;
 	rating: string;
-	genres: string;
+	genres: string[];
 	backdropSrc: string;
 	tagline: string;
 	budget: number;

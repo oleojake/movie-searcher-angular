@@ -36,7 +36,7 @@ export class TMBDmoviesService {
 			plot: movieDetailData.overview || 'No plot available.',
 			posterSrc: `https://image.tmdb.org/t/p/w500${movieDetailData.poster_path}`,
 			rating: movieDetailData.vote_average ? movieDetailData.vote_average.toFixed(1) : 'N/A',
-			genres: movieDetailData.genres.map((genre: any) => genre.name).join(', '),
+			genres: movieDetailData.genres.map((genre: any) => genre.name),
 			backdropSrc: `https://image.tmdb.org/t/p/w1280${movieDetailData.backdrop_path}`,
 			tagline: movieDetailData.tagline || '',
 			budget: movieDetailData.budget || 0,
@@ -49,12 +49,11 @@ export class TMBDmoviesService {
 		};
 	}
 
-	getPopularMovies(): Observable<MovieListModel[]> {
-		return this.http
-			.get<any>(`${this.BASE_URL}/movie/popular?language=en-US&page=1`, { headers: this.headers })
-			.pipe(
-				map((response) => response.results.map(this.mapMovieForMovieList))
-			);
+	getMoviesByCategory(category: string): Observable<MovieListModel[]> {
+		const url = `${this.BASE_URL}/movie/${category}?language=en-US&page=1`;
+		return this.http.get<any>(url, { headers: this.headers }).pipe(
+			map((response) => response.results.map(this.mapMovieForMovieList).slice(0, 10))
+		);
 	}
 
 	getMovieDetails(id: number): Observable<MovieDetailModel> {

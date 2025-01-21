@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { MovieListModel } from '../../model/movieModels';
+import { MatIcon } from '@angular/material/icon';
+import { MovieListFilter } from '@model/listsFilters';
 
 @Component({
 	selector: 'app-movie-card',
 	standalone: true,
-	imports: [],
+	imports: [MatIcon],
 	templateUrl: './movie-card.component.html',
 	styleUrl: './movie-card.component.scss'
 })
@@ -19,5 +21,8 @@ export class MovieCardComponent {
 		posterSrc: '',
 		rating: ''
 	};
+
+	@Input()
+	category!: MovieListFilter;
 
 }

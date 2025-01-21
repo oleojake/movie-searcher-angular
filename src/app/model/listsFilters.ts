@@ -1,0 +1,1 @@
+export type MovieListFilter = 'popular' | 'top_rated';
