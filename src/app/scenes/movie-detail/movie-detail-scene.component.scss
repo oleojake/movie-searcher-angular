@@ -1,0 +1,143 @@
+.movie-details {
+  position: relative;
+  padding: 2rem;
+  margin: 0 auto;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    border-radius: 10px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    .poster {
+      flex: 0 0 350px;
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+
+    .info {
+      flex-grow: 1;
+      color: #fff;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        color: #ffcc00;
+      }
+
+			.rating {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			
+				mat-icon {
+					font-size: 1.5rem;
+					color: #fbc02d;
+				}
+			
+				strong {
+					font-weight: bold;
+				}
+			}
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0.5rem 0;
+
+        strong {
+          color: #ffcc00;
+        }
+
+        a {
+          color: #00bcd4;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      p strong {
+        font-weight: bold;
+      }
+
+      p a {
+        display: inline-block;
+        margin-top: 0.5rem;
+      }
+
+			table {
+				width: 100%;
+				background-color: #00647111;
+				color: #333;
+				border-radius: 8px;
+				margin-top: 1rem;
+				border-collapse: collapse;
+			
+				td {
+					padding: 1rem;
+					text-align: left;
+					font-size: 1rem;
+					vertical-align: middle;
+				}
+			
+				td p {
+					margin: 0;
+					font-weight: normal;
+				}
+			
+				.budget, .revenue {
+					text-align: center;
+					font-weight: bold;
+				}
+			
+				.budget {
+					color: orange;
+				}
+			
+				.revenue {
+					color: #4caf50;
+				}
+			}
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-details {
+    padding: 1rem;
+
+    .details {
+      flex-direction: column;
+      align-items: center;
+
+      .poster {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 1rem;
+      }
+
+      .info {
+        text-align: center;
+      }
+    }
+  }
+}

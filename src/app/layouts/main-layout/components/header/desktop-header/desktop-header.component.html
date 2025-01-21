@@ -1,0 +1,16 @@
+<header>
+  <mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>Menu
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Home</button>
+      <button mat-menu-item>Movies</button>
+      <button mat-menu-item>Celebs</button>
+    </mat-menu>
+    <mat-form-field subscriptSizing="dynamic" class="small">
+      <input matInput placeholder="Search your movie..." />
+    </mat-form-field>
+    <button mat-flat-button>Search<mat-icon>search</mat-icon></button>
+  </mat-toolbar>
+</header>

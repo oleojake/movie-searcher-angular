@@ -1,0 +1,15 @@
+header mat-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+	border-bottom: 1px solid #333;
+
+	mat-form-field.small {
+		width: 100%;
+		max-width: 300px;
+		--mat-form-field-container-height: 20px;
+		--mat-form-field-container-vertical-padding: 4px;
+	}
+}
+

@@ -1,0 +1,6 @@
+<app-desktop-header *ngIf="!(isMobile$ | async)"></app-desktop-header>
+<app-mobile-header *ngIf="isMobile$ | async"></app-mobile-header>
+<main>
+  <ng-content></ng-content>
+</main>
+<app-footer></app-footer>
