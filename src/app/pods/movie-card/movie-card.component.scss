@@ -28,6 +28,13 @@
 	}
 }
 
+.default{
+	&:hover{
+		box-shadow: 0 4px 8px #3a3a3a;
+		background: linear-gradient(to bottom, #3a3a3a, #1e1e1e);
+	}
+}
+
 .movie-poster {
   width: 100%;
   height: auto;

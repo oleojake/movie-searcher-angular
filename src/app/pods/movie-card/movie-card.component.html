@@ -1,4 +1,9 @@
-<div class="movie-card {{ category }}">
+<div
+  class="movie-card"
+  [class]="
+    category === 'popular' || category === 'top_rated' ? category : 'default'
+  "
+>
   <img [src]="movie.posterSrc" [alt]="movie.title" class="movie-poster" />
   <span class="movie-rating"
     ><mat-icon>star</mat-icon> <span>{{ movie.rating }}</span></span

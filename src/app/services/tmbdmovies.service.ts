@@ -76,4 +76,12 @@ export class TMBDmoviesService {
 				map((response) => response.results.map(this.mapMovieForMovieList))
 			);
 	}
+
+	getSimilarMovies(movieId: number): Observable<MovieListModel[]> {
+		return this.http
+			.get<any>(`${this.BASE_URL}/movie/${movieId}/recommendations?language=en-US`, { headers: this.headers })
+			.pipe(
+				map((response) => response.results.map(this.mapMovieForMovieList))
+			);
+	}
 }

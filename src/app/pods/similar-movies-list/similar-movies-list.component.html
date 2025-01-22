@@ -1,0 +1,17 @@
+<section class="movie-slider-container default">
+  <h2 class="movie-slider-title">Similar movies</h2>
+  <div class="movie-slider">
+    <div class="movie-slider-item" *ngFor="let movie of similarMovies">
+      <div class="movie-card" [routerLink]="['/movie', movie.id]">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w500/' + movie.posterSrc"
+          [alt]="movie.title"
+          class="movie-card-image"
+        />
+        <div class="movie-card-title">
+          <p class="movie-title">{{ movie.title }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
