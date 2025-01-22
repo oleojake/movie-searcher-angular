@@ -2,15 +2,12 @@ import { Component, OnInit, } from '@angular/core';
 import { MovieDetailModel } from '@model/movieModels';
 import { ActivatedRoute } from '@angular/router';
 import { TMBDmoviesService } from '@services/tmbdmovies.service';
-import { CommonModule } from '@angular/common';
 import { MainLayoutComponent } from '@layouts/main-layout/main-layout.component'
-import { MatChip } from '@angular/material/chips';
-import { MatIcon } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
+import { MovieDetailsInfoComponent } from "./components/movie-details-info/movie-details-info.component";
 @Component({
 	selector: 'app-movie-detail-scene',
 	standalone: true,
-	imports: [CommonModule, MainLayoutComponent, MatChip, MatIcon, MatTableModule],
+	imports: [MainLayoutComponent, MovieDetailsInfoComponent],
 	templateUrl: './movie-detail-scene.component.html',
 	styleUrl: './movie-detail-scene.component.scss'
 })
