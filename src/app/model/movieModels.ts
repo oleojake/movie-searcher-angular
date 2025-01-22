@@ -1,3 +1,5 @@
+import { MovieGenre } from "./genresModel";
+
 export interface MovieListModel {
 	id: number;
 	title: string;
@@ -15,7 +17,7 @@ export interface MovieDetailModel {
 	plot: string;
 	posterSrc: string;
 	rating: string;
-	genres: string[];
+	genres: MovieGenre[];
 	backdropSrc: string;
 	tagline: string;
 	budget: number;

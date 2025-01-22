@@ -23,6 +23,6 @@ export class MovieCardComponent {
 	};
 
 	@Input()
-	category!: MovieListFilter;
+	category!: string;
 
 }

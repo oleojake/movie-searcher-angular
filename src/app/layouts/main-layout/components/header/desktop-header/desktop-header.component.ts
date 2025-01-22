@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink } from '@angular/router';
-import { MovieGenres } from '@model/genresModel';
+import { MovieGenre } from '@model/genresModel';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -19,6 +19,6 @@ import { NgFor } from '@angular/common';
 export class DesktopHeaderComponent {
 
 	@Input()
-	genres: MovieGenres[] = [];
+	genres: MovieGenre[] = [];
 
 }

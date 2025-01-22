@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { MovieDetailModel, MovieListModel } from '@model/movieModels';
-import { MovieGenres } from '@model/genresModel';
+import { MovieGenre } from '@model/genresModel';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,7 +37,7 @@ export class TMBDmoviesService {
 			plot: movieDetailData.overview || 'No plot available.',
 			posterSrc: `https://image.tmdb.org/t/p/w500${movieDetailData.poster_path}`,
 			rating: movieDetailData.vote_average ? movieDetailData.vote_average.toFixed(1) : 'N/A',
-			genres: movieDetailData.genres.map((genre: any) => genre.name),
+			genres: movieDetailData.genres,
 			backdropSrc: `https://image.tmdb.org/t/p/w1280${movieDetailData.backdrop_path}`,
 			tagline: movieDetailData.tagline || '',
 			budget: movieDetailData.budget || 0,
@@ -63,9 +63,17 @@ export class TMBDmoviesService {
 		);
 	}
 
-	getGenres(): Observable<MovieGenres[]> {
+	getGenres(): Observable<MovieGenre[]> {
 		return this.http.get<any>(`${this.BASE_URL}/genre/movie/list?language=en-US`, { headers: this.headers }).pipe(
 			map((response) => response.genres)
 		);
+	}
+
+	getMoviesByGenre(genreId: string): Observable<MovieListModel[]> {
+		return this.http
+			.get<any>(`${this.BASE_URL}/discover/movie?with_genres=${genreId}&language=en-US`, { headers: this.headers })
+			.pipe(
+				map((response) => response.results.map(this.mapMovieForMovieList))
+			);
 	}
 }

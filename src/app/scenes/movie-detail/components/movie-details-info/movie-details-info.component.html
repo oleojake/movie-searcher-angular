@@ -14,9 +14,12 @@
         <h1>{{ movieDetails.title }}</h1>
         <p class="year">{{ movieDetails.year }} - {{ movieDetails.runtime }}</p>
         <p class="genres">
-          <mat-chip *ngFor="let genre of movieDetails.genres">{{
-            genre
-          }}</mat-chip>
+          <mat-chip
+            class="genre-chip"
+            *ngFor="let genre of movieDetails.genres"
+            [routerLink]="['/genre', genre.id]"
+            >{{ genre.name }}</mat-chip
+          >
         </p>
       </div>
       <p>{{ movieDetails.plot }}</p>

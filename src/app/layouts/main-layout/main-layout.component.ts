@@ -3,7 +3,7 @@ import { FooterComponent, DesktopHeaderComponent, MobileHeaderComponent } from '
 import { ResponsiveService } from '@services/responsive.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { MovieGenres } from '@model/genresModel';
+import { MovieGenre } from '@model/genresModel';
 import { TMBDmoviesService } from '@services/tmbdmovies.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { TMBDmoviesService } from '@services/tmbdmovies.service';
 })
 export class MainLayoutComponent implements OnInit {
 	isMobile$!: Observable<boolean>;
-	genres: MovieGenres[] = [];
+	genres: MovieGenre[] = [];
 
 	constructor(private responsiveService: ResponsiveService, private movieService: TMBDmoviesService) { }
 

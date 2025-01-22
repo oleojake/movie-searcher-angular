@@ -1,6 +1,9 @@
-<section class="movie-list-container" class="{{ filter }}">
+<section
+  class="movie-list-container"
+  [class]="filter === 'popular' || filter === 'top_rated' ? filter : 'default'"
+>
   <h2 class="movie-list-title">{{ headerTitle }}</h2>
-  <div class="movie-list-grid">
+  <div class="movie-list-grid slider">
     <app-movie-card
       *ngFor="let movie of movies"
       [movie]="movie"
