@@ -1,0 +1,178 @@
+.movie-details {
+  display: flex;
+  position: relative;
+  padding: 2rem;
+  background: radial-gradient(circle, #00ffff3b, #002222);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    border-radius: 10px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: row;
+		justify-content: center;
+    gap: 2rem;
+
+    .poster {
+      flex: 0 0 350px;
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+
+    .info {
+			display: flex;
+			flex-direction: column;
+			gap: 0.2rem;
+      flex-grow: 1;
+      color: #fff;
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+				margin-bottom: 0px!important;
+				line-height: 1;
+      }
+
+			.year{
+				margin-top: 0px!important;
+				color: #ccc;
+				margin-bottom: 1.5rem;
+			}
+
+			.genres{
+				display: flex;
+				gap: 0.5rem;
+			}
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        mat-icon {
+          font-size: 1.5rem;
+          color: #fbc02d;
+        }
+
+        strong {
+          font-weight: bold;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0.5rem 0;
+
+        a {
+          color: #00bcd4;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      table {
+        width: 100%;
+        background-color: #00647111;
+        color: #333;
+        border-radius: 8px;
+        margin-top: 1rem;
+				margin-bottom: 1rem;
+        border-collapse: collapse;
+
+        td {
+          padding: 1rem;
+          text-align: left;
+          font-size: 1rem;
+          vertical-align: middle;
+        }
+
+        .budget,
+        .revenue {
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .budget {
+          color: orange;
+        }
+
+        .revenue {
+          color: #4caf50;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .movie-details {
+
+    .details {
+      flex-direction: row;
+      gap: 1rem;
+
+      .poster {
+        flex: 0 0 200px;
+
+        img {
+          width: 100%;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-details {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+    .details {
+      flex-direction: column;
+      align-items: center;
+
+      .poster {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 1rem;
+      }
+
+      .info {
+        width: 100%;
+        text-align: center;
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        table {
+          margin: 1rem auto;
+          td {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}

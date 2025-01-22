@@ -3,6 +3,8 @@ import { FooterComponent, DesktopHeaderComponent, MobileHeaderComponent } from '
 import { ResponsiveService } from '@services/responsive.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { MovieGenres } from '@model/genresModel';
+import { TMBDmoviesService } from '@services/tmbdmovies.service';
 
 @Component({
 	selector: 'app-main-layout',
@@ -13,11 +15,18 @@ import { CommonModule } from '@angular/common';
 })
 export class MainLayoutComponent implements OnInit {
 	isMobile$!: Observable<boolean>;
+	genres: MovieGenres[] = [];
 
-	constructor(private responsiveService: ResponsiveService) { }
+	constructor(private responsiveService: ResponsiveService, private movieService: TMBDmoviesService) { }
 
 	ngOnInit(): void {
 		this.isMobile$ = this.responsiveService.isMobile$;
+		this.movieService.getGenres().subscribe({
+			next: (genres) => {
+				this.genres = genres;
+			},
+			error: (error) => console.error('Error fetching genres:', error),
+		});
 	}
 
 }

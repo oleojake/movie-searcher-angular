@@ -1,8 +1,22 @@
 <header>
   <mat-toolbar>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>Menu
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/']">Home</button>
+      <button mat-menu-item [matMenuTriggerFor]="categories">Categories</button>
+      <mat-menu #categories="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let genre of genres"
+          [routerLink]="['/genre', genre.id]"
+        >
+          {{ genre.name }}
+        </button>
+      </mat-menu>
+      <button mat-menu-item>Celebs</button>
+    </mat-menu>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Home</button>
       <button mat-menu-item>Movies</button>

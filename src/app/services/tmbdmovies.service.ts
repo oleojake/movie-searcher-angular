@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { MovieDetailModel, MovieListModel } from '@model/movieModels';
+import { MovieGenres } from '@model/genresModel';
 
 @Injectable({
 	providedIn: 'root'
@@ -59,6 +60,12 @@ export class TMBDmoviesService {
 	getMovieDetails(id: number): Observable<MovieDetailModel> {
 		return this.http.get<any>(`${this.BASE_URL}/movie/${id}?language=en-US`, { headers: this.headers }).pipe(
 			map((raw) => this.mapMovieDetail(raw))
+		);
+	}
+
+	getGenres(): Observable<MovieGenres[]> {
+		return this.http.get<any>(`${this.BASE_URL}/genre/movie/list?language=en-US`, { headers: this.headers }).pipe(
+			map((response) => response.genres)
 		);
 	}
 }

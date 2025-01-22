@@ -1,5 +1,11 @@
-<app-desktop-header *ngIf="!(isMobile$ | async)"></app-desktop-header>
-<app-mobile-header *ngIf="isMobile$ | async"></app-mobile-header>
+<app-desktop-header
+  *ngIf="!(isMobile$ | async)"
+  [genres]="genres"
+></app-desktop-header>
+<app-mobile-header
+  *ngIf="isMobile$ | async"
+  [genres]="genres"
+></app-mobile-header>
 <main>
   <ng-content></ng-content>
 </main>
