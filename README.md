@@ -1,5 +1,9 @@
 # MovieSearcher
 
+This project is a modern and responsive movie information app designed to provide users with a seamless experience for exploring movie details. Users can browse through popular, top-rated, and similar movies, view detailed information about a selected movie, including its cast, plot, genres, and production details. The app integrates features like interactive movie sliders, cast carousels, and a visually appealing movie details page, all styled with clean and reusable SCSS components. With a focus on accessibility and performance, this project ensures an engaging experience for movie enthusiasts.
+
+![MovieSearcher](./public/movie-searcher-gif.gif)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
 
 ## Development server
