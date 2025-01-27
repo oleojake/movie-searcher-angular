@@ -1,43 +1,43 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { MovieCardComponent } from "../movie-card/movie-card.component";
 import { MovieListModel } from '../../model/movieModels';
 import { NgFor } from '@angular/common';
-import { TMBDmoviesService } from '../../services/tmbdmovies.service';
-import { RouterLink } from '@angular/router';
-
-
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
 	selector: 'app-movie-list',
 	standalone: true,
 	imports: [MovieCardComponent, NgFor, RouterLink],
 	templateUrl: './movie-list.component.html',
-	styleUrl: './movie-list.component.scss'
+	styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit, OnChanges {
-	@Input()
-	filter!: string;
+	@Input() movies: MovieListModel[] = [];
+	@Input() filter!: string;
+	searchTerm!: string;
 
-	genreName!: string;
+	headerTitle: string = '';
 
-	headerTitle!: string;
-	movies: MovieListModel[] = [];
-
-
-	constructor(private movieService: TMBDmoviesService) { }
+	constructor(private route: ActivatedRoute) { }
 
 	ngOnInit(): void {
-		this.getGenres();
-		this.loadMovies();
+		if (this.filter === 'search') {
+			this.route.queryParams.subscribe(params => {
+				this.searchTerm = params['terms'] || '';
+				if (this.searchTerm) {
+					this.headerTitle = `Search results for "${this.searchTerm}"`;
+				}
+			});
+		} else {
+			this.setHeaderTitle();
+		}
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['filter']) {
-			this.getGenres();
-			this.loadMovies();
+			this.setHeaderTitle();
 		}
 	}
-
 
 	private setHeaderTitle(): void {
 		switch (this.filter) {
@@ -48,42 +48,7 @@ export class MovieListComponent implements OnInit, OnChanges {
 				this.headerTitle = 'Top Rated Movies';
 				break;
 			default:
-				this.headerTitle = `${this.genreName} Movies`;
+				this.headerTitle = `${this.filter} Movies`;
 		}
-	}
-
-	private loadMovies(): void {
-		if (this.filter === 'popular' || this.filter === 'top_rated') {
-			this.movieService.getMoviesByCategory(this.filter).subscribe({
-				next: (movies: MovieListModel[]) => {
-					this.movies = movies;
-				},
-				error: (error: any) => {
-					console.error('Error fetching movies:', error);
-				},
-			});
-		} else {
-			this.movieService.getMoviesByGenre(this.filter).subscribe({
-				next: (movies: MovieListModel[]) => {
-					this.movies = movies;
-				},
-				error: (error: any) => {
-					console.error('Error fetching movies by genre:', error);
-				},
-			});
-		}
-	}
-
-	private getGenres(): void {
-		this.movieService.getGenres().subscribe({
-			next: (genres) => {
-				const genre = genres.find((g) => g.id === +this.filter);
-				this.genreName = genre ? genre.name : 'Unknown Genre';
-				this.setHeaderTitle();
-			},
-			error: (error) => {
-				console.error('Error fetching genres:', error);
-			},
-		});
 	}
 }

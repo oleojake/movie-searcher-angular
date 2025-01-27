@@ -7,7 +7,7 @@ import { MovieCardComponent } from '@pods/movie-card/movie-card.component';
 @Component({
 	selector: 'app-similar-movies-list',
 	standalone: true,
-	imports: [NgFor, RouterLink, MovieCardComponent, CommonModule],
+	imports: [NgFor, RouterLink, CommonModule],
 	templateUrl: './similar-movies-list.component.html',
 	styleUrl: './similar-movies-list.component.scss'
 })

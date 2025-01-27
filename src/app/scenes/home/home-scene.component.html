@@ -1,4 +1,10 @@
 <app-main-layout>
-  <app-movie-list [filter]="'popular'"></app-movie-list>
-  <app-movie-list [filter]="'top_rated'"></app-movie-list>
+  <app-movie-list
+    [movies]="popularMovies"
+    [filter]="'popular'"
+  ></app-movie-list>
+  <app-movie-list
+    [movies]="topRatedMovies"
+    [filter]="'top_rated'"
+  ></app-movie-list>
 </app-main-layout>

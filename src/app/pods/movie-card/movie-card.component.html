@@ -1,12 +1,15 @@
 <div
   class="movie-card"
-  [class]="
-    category === 'popular' || category === 'top_rated' ? category : 'default'
-  "
+  [ngClass]="{
+    popular: category === 'popular',
+    top_rated: category === 'top_rated',
+    default: category !== 'popular' && category !== 'top_rated'
+  }"
 >
   <img [src]="movie.posterSrc" [alt]="movie.title" class="movie-poster" />
   <span class="movie-rating"
-    ><mat-icon>star</mat-icon> <span>{{ movie.rating }}</span></span
+    ><mat-icon aria-hidden="true">star</mat-icon>
+    <span>{{ movie.rating }}</span></span
   >
   <div class="movie-info">
     <h3 class="movie-title">{{ movie.title }}</h3>

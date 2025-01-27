@@ -5,10 +5,11 @@ import { TMBDmoviesService } from '@services/tmbdmovies.service';
 import { MainLayoutComponent } from '@layouts/main-layout/main-layout.component'
 import { MovieDetailsInfoComponent } from "./components/movie-details-info/movie-details-info.component";
 import { SimilarMoviesListComponent } from "../../pods/similar-movies-list/similar-movies-list.component";
+import { CastingListComponent } from "./components/casting-list/casting-list.component";
 @Component({
 	selector: 'app-movie-detail-scene',
 	standalone: true,
-	imports: [MainLayoutComponent, MovieDetailsInfoComponent, SimilarMoviesListComponent],
+	imports: [MainLayoutComponent, MovieDetailsInfoComponent, SimilarMoviesListComponent, CastingListComponent],
 	templateUrl: './movie-detail-scene.component.html',
 	styleUrl: './movie-detail-scene.component.scss'
 })
@@ -33,8 +34,7 @@ export class MovieDetailScene implements OnInit {
 	fetchMovieDetails(): void {
 		this.movieService.getMovieDetails(this.movieId).subscribe({
 			next: (details) => {
-				this.movieDetails = details,
-					console.log(this.movieDetails)
+				this.movieDetails = details;
 			},
 			error: (error) => console.error('Error fetching movie details:', error),
 		});
@@ -44,7 +44,6 @@ export class MovieDetailScene implements OnInit {
 		this.movieService.getSimilarMovies(this.movieId).subscribe({
 			next: (movies) => {
 				this.similarMovies = movies
-				console.log(this.similarMovies)
 			},
 			error: (error) => console.error('Error fetching similar movies:', error),
 		});

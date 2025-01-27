@@ -2,3 +2,56 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* MOVIE LIST */
+$color-popular-shadow: #008d8d;
+$color-popular-gradient-start: #00ffff;
+$color-popular-gradient-end: #008d8d;
+
+$color-top-rated-shadow: #fffacd8b;
+$color-top-rated-gradient-start: #fffacd;
+$color-top-rated-gradient-end: #645500;
+
+$color-default-shadow: #3a3a3a;
+$color-default-gradient-start: #3a3a3a;
+$color-default-gradient-end: #1e1e1e;
+
+$primary-accent-color: #ff9800;
+$text-color-light: #ffffff;
+$text-color-muted: #cccccc;
+
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$background-color: rgba(30, 30, 30, 0.9);
+
+/* MOVIE DETAILS */
+$color-popular-gradient-start: #00ffff3b;
+$color-popular-gradient-end: #002222;
+$color-top-rated-gradient-start: #ffd7003b;
+$color-top-rated-gradient-end: #222200;
+$color-default-gradient-start: #3a3a3a;
+$color-default-gradient-end: #1e1e1e;
+$primary-light: #00ffff3b;
+$primary-dark: #002222;
+$accent-color-light: #00bcd4;
+$accent-color-dark: #0097a7;
+$text-color-light: #ffffff;
+$text-color-dark: #333333;
+$text-color-secondary: #cccccc;
+$background-alt: rgba(0, 100, 113, 0.07);
+$budget-color: orange;
+$revenue-color: #4caf50;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$box-shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 6px 10px rgba(0, 0, 0, 0.15);
+$link-color: #00bcd4;
+
+/* MOVIE SLIDER */
+$color-default-gradient-start: rgba(58, 58, 58, 0.54);
+$color-default-gradient-end: rgba(30, 30, 30, 0.28);
+$scrollbar-thumb-color: #555;
+$scrollbar-track-color: #222;
+$text-color-light: #ffffff;
+$border-radius-md: 8px;
+$border-radius-lg: 10px;

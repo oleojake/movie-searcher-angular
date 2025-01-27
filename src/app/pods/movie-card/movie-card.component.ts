@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { MovieListModel } from '../../model/movieModels';
 import { MatIcon } from '@angular/material/icon';
-import { MovieListFilter } from '@model/listsFilters';
+import { NgClass } from '@angular/common';
 
 @Component({
 	selector: 'app-movie-card',
 	standalone: true,
-	imports: [MatIcon],
+	imports: [MatIcon, NgClass],
 	templateUrl: './movie-card.component.html',
 	styleUrl: './movie-card.component.scss'
 })

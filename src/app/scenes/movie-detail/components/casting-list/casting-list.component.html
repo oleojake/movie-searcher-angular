@@ -1,0 +1,11 @@
+<section class="casting-section">
+  <h2 class="casting-title">Main Cast</h2>
+  <div class="casting-slider">
+    <div class="actor" *ngFor="let actor of casting">
+      <div class="image">
+        <img [src]="actor.avatarSrc" [alt]="actor.name" />
+      </div>
+      <p class="name">{{ actor.name }}</p>
+    </div>
+  </div>
+</section>
