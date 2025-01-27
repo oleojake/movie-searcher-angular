@@ -5,6 +5,13 @@ header mat-toolbar {
   gap: 1rem;
 	border-bottom: 1px solid #333;
 
+	form{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+	}
+
 	mat-form-field.small {
 		width: 100%;
 		max-width: 300px;

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { MovieDetailModel, MovieListModel } from '@model/movieModels';
 import { MovieGenre } from '@model/genresModel';
+import { ActorModel } from '@model/actorsModel';
 
 @Injectable({
 	providedIn: 'root'
@@ -50,6 +51,15 @@ export class TMBDmoviesService {
 		};
 	}
 
+	private mapActorFromMovieCasting(castingData: any): ActorModel {
+		return {
+			id: castingData.id,
+			name: castingData.name,
+			avatarSrc: castingData.profile_path ? `https://image.tmdb.org/t/p/w500${castingData.profile_path}` : 'https://via.placeholder.com/500',
+			popularity: castingData.popularity,
+		};
+	}
+
 	getMoviesByCategory(category: string): Observable<MovieListModel[]> {
 		const url = `${this.BASE_URL}/movie/${category}?language=en-US&page=1`;
 		return this.http.get<any>(url, { headers: this.headers }).pipe(
@@ -83,5 +93,21 @@ export class TMBDmoviesService {
 			.pipe(
 				map((response) => response.results.map(this.mapMovieForMovieList))
 			);
+	}
+
+	getCastingFromMovie(movieId: number): Observable<ActorModel[]> {
+		return this.http.get<any>(`${this.BASE_URL}/movie/${movieId}/credits?language=en-US`, { headers: this.headers }).pipe(
+			map((response) => response.cast
+				.map(this.mapActorFromMovieCasting)
+				.sort((a: ActorModel, b: ActorModel) => b.popularity - a.popularity)
+				.slice(0, 5))
+		);
+	}
+
+	searchMovies(terms: string): Observable<MovieListModel[]> {
+		const url = `${this.BASE_URL}/search/movie?query=${encodeURIComponent(terms)}&language=en-US&page=1`;
+		return this.http.get<any>(url, { headers: this.headers }).pipe(
+			map((response) => response.results.map(this.mapMovieForMovieList))
+		);
 	}
 }

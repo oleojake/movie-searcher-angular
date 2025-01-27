@@ -15,11 +15,20 @@
           {{ genre.name }}
         </button>
       </mat-menu>
-      <button mat-menu-item>Celebs</button>
     </mat-menu>
-    <mat-form-field subscriptSizing="dynamic" class="small">
-      <input matInput placeholder="Search your movie..." />
-    </mat-form-field>
-    <button mat-flat-button>Search<mat-icon>search</mat-icon></button>
+    <form (submit)="onSearch($event)">
+      <mat-form-field subscriptSizing="dynamic" class="small">
+        <input
+          matInput
+          [(ngModel)]="searchTerm"
+          name="search"
+          required
+          placeholder="Search your movie..."
+        />
+      </mat-form-field>
+      <button mat-flat-button type="submit">
+        Search<mat-icon>search</mat-icon>
+      </button>
+    </form>
   </mat-toolbar>
 </header>
